@@ -2,6 +2,7 @@ SRCS_DIR	=	./
 
 SRC			=	Colleen.s\
 				Grace.s\
+				Sully.s\
 
 SRCS 		=	$(addprefix $(SRCS_DIR), $(SRC))
 
@@ -21,7 +22,7 @@ all			:	$(OBJS_DIR) $(NAME)
 
 bonus		:	$(NAME)
 
-$(NAME)		:	$(OBJS)
+$(NAME)		:	%: $(OBJS_DIR)%.o
 					$(GCC) -o $@ $<
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.s
@@ -31,7 +32,7 @@ $(OBJS_DIR)	:
 					mkdir $(OBJS_DIR)
 
 clean		:
-					rm -rf $(OBJS_DIR)
+					rm -rf $(OBJS_DIR) Grace_kid.s Sully_*
 
 fclean		:	clean
 					rm -f $(NAME)
