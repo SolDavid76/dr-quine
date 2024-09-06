@@ -1,6 +1,8 @@
 SRCS_DIR	=	./
 
-SRC			=	Grace.c\
+SRC			=	Colleen.c\
+				Grace.c\
+				Sully.c\
 
 SRCS 		=	$(addprefix $(SRCS_DIR), $(SRC))
 
@@ -12,23 +14,23 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
 
 GCC			=	gcc -Wall -Wextra -Werror
 
-NAME		=	Grace
+NAME		=	$(SRC:.c=)
 
 all			:	$(OBJS_DIR) $(NAME)
 
 bonus		:	$(NAME)
 
-$(NAME)		:	$(OBJS)
-					$(GCC) $(OBJS) -o $(NAME)
+$(NAME)		:	%: $(OBJS_DIR)%.o
+					$(GCC) -o $@ $<
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
-				 	$(GCC) -c $< -o $@
+				 	$(GCC) -c -o $@ $<
 
 $(OBJS_DIR)	:
 					mkdir $(OBJS_DIR)
 
 clean		:
-					rm -rf $(OBJS_DIR)
+					rm -rf $(OBJS_DIR) Grace_kid.s Sully_*
 
 fclean		:	clean
 					rm -f $(NAME)
