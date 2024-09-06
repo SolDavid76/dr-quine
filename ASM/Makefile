@@ -16,7 +16,7 @@ GCC			=	gcc -lc -no-pie
 
 NASM		=	nasm -f elf64
 
-NAME		=	$(OBJ:.o=)
+NAME		=	$(SRC:.s=)
 
 all			:	$(OBJS_DIR) $(NAME)
 
